@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Navbar() {
 	return (
-		<nav className="w-full  relative flex items-center justify-between max-w-4xl mx-auto px-4  py-5">
+		<nav className="w-full  relative flex items-center justify-between max-w-4xl mx-auto px-4 py-5">
 			<Link href="/" className="">
 				<h1 className="text-2xl">
 					agents<span className="text-[#d90706] font-bold">Book</span>
