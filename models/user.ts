@@ -36,11 +36,11 @@ const userSchema = new Schema(
 			enum: ['user', 'admin', 'super-admin'],
 			default: 'user'
 		},
-		subscription: {
+		subscriptionStatus: {
 			type: Boolean,
 			default: false
 		},
-		subscriptionDate: {
+		subscriptionStartDate: {
 			type: Date
 		}
 	},
@@ -49,8 +49,8 @@ const userSchema = new Schema(
 
 // Middleware to update subscriptionDate when subscription is set to true
 userSchema.pre('save', function (next) {
-	if (this.subscription && !this.subscriptionDate) {
-		this.subscriptionDate = new Date();
+	if (this.subscriptionStatus && !this.subscriptionStartDate) {
+		this.subscriptionStartDate = new Date();
 	}
 	next();
 });
