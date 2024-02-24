@@ -17,7 +17,7 @@ const data = [
 		smallDescription:
 			'SMALL-DESCRIPTION LOREM IPSUM, DOLOR SIT AMET CONSECTETUR ADIPISICING ELIT. OBCAECATI, TOTAM! LOREM IPSUM DOLOR SIT, AMET CONSECTETUR ADIPISICING ELIT. EA, APERIAM?',
 		price: '20',
-		currentSlug: 'CURRENT-SLUG'
+		currentSlug: 'CURRENT-SLUG-1'
 	},
 	{
 		titleImage: 'IMG-TITLE',
@@ -25,7 +25,7 @@ const data = [
 		smallDescription:
 			'SMALL-DESCRIPTION LOREM IPSUM, DOLOR SIT AMET CONSECTETUR ADIPISICING ELIT. OBCAECATI, TOTAM! LOREM IPSUM DOLOR SIT, AMET CONSECTETUR ADIPISICING ELIT. EA, APERIAM?',
 		price: '20',
-		currentSlug: 'CURRENT-SLUG'
+		currentSlug: 'CURRENT-SLUG-2'
 	},
 	{
 		titleImage: 'IMG-TITLE',
@@ -33,7 +33,7 @@ const data = [
 		smallDescription:
 			'SMALL-DESCRIPTION LOREM IPSUM, DOLOR SIT AMET CONSECTETUR ADIPISICING ELIT. OBCAECATI, TOTAM! LOREM IPSUM DOLOR SIT, AMET CONSECTETUR ADIPISICING ELIT. EA, APERIAM?',
 		price: '20',
-		currentSlug: 'CURRENT-SLUG'
+		currentSlug: 'CURRENT-SLUG-3'
 	},
 	{
 		titleImage: 'IMG-TITLE',
@@ -41,7 +41,7 @@ const data = [
 		smallDescription:
 			'SMALL-DESCRIPTION LOREM IPSUM, DOLOR SIT AMET CONSECTETUR ADIPISICING ELIT. OBCAECATI, TOTAM! LOREM IPSUM DOLOR SIT, AMET CONSECTETUR ADIPISICING ELIT. EA, APERIAM?',
 		price: '20',
-		currentSlug: 'CURRENT-SLUG'
+		currentSlug: 'CURRENT-SLUG-4'
 	},
 	{
 		titleImage: 'IMG-TITLE',
@@ -49,7 +49,7 @@ const data = [
 		smallDescription:
 			'SMALL-DESCRIPTION LOREM IPSUM, DOLOR SIT AMET CONSECTETUR ADIPISICING ELIT. OBCAECATI, TOTAM! LOREM IPSUM DOLOR SIT, AMET CONSECTETUR ADIPISICING ELIT. EA, APERIAM?',
 		price: '20',
-		currentSlug: 'CURRENT-SLUG'
+		currentSlug: 'CURRENT-SLUG-5'
 	}
 ];
 
@@ -69,6 +69,7 @@ export default function Home() {
 
 					<CardContent className="mt-5">
 						<h3 className="text-lg line-clamp-2 font-bold">{post.title}</h3>
+
 						<div className="flex items-center justify-between">
 							<p>
 								Posted: <span className="text-gray-500">3hr</span>
@@ -77,9 +78,11 @@ export default function Home() {
 								Price: <span className="text-gray-500">${post.price}</span>
 							</p>
 						</div>
+
 						<p className="line-clamp-2 text-sm mt-2 text-gray-600 dark:text-gray-300">
 							{post.smallDescription}
 						</p>
+
 						<Button asChild className="w-full mt-7">
 							<Link href={`/product/${post.currentSlug}`}>Read More</Link>
 						</Button>

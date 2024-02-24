@@ -1,5 +1,7 @@
-import { ModeToggle } from '@/components/mode-toggle';
 import Link from 'next/link';
+
+import { ModeToggle } from '@/components/mode-toggle';
+import { BellIcon } from '@radix-ui/react-icons';
 
 export default function Navbar() {
 	return (
@@ -12,6 +14,7 @@ export default function Navbar() {
 			<div className="flex items-center justify-center gap-3">
 				<h2 className="cursor-pointer">SignIn</h2>
 				<h2 className="cursor-pointer">SignUp</h2>
+				<BellIcon className="h-[1.2rem] w-[1.2rem]" />
 				<ModeToggle />
 			</div>
 		</nav>
