@@ -72,7 +72,7 @@ export default function Home() {
 
 						<div className="flex items-center justify-between">
 							<p>
-								Posted: <span className="text-gray-500">3hr</span>
+								Posted: <span className="text-gray-500">3hr ago</span>
 							</p>
 							<p>
 								Price: <span className="text-gray-500">${post.price}</span>
