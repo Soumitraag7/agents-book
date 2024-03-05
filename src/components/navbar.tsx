@@ -15,13 +15,13 @@ export default function Navbar() {
 			<div className="flex items-center justify-center gap-3">
 				<Link
 					href="/sign-in"
-					className="dark:hover:text-blue-200 hover:text-gray-500"
+					className="dark:hover:text-blue-200 hover:text-gray-500 whitespace-nowrap"
 				>
 					Sign in
 				</Link>
 				<Link
 					href="/sign-up"
-					className="dark:hover:text-blue-200 hover:text-gray-500"
+					className="dark:hover:text-blue-200 hover:text-gray-500 whitespace-nowrap"
 				>
 					Sign up
 				</Link>
