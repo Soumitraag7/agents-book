@@ -1,12 +1,12 @@
 import Link from 'next/link';
 
 import { ModeToggle } from '@/components/mode-toggle';
-import { BellIcon } from '@radix-ui/react-icons';
 import { Notification } from './notification';
+import MobileMenu from './mobile-menu';
 
 export default function Navbar() {
 	return (
-		<nav className="w-full relative flex items-center justify-between max-w-4xl mx-auto px-4 py-5">
+		<nav className="w-full relative flex items-center justify-between mx-auto max-w-[1440px] px-6 lg:px-20 3xl:px-0 py-5">
 			<Link href="/" className="">
 				<h1 className="text-2xl">
 					agents<span className="text-[#d90706] font-bold">Book</span>
@@ -26,8 +26,11 @@ export default function Navbar() {
 				>
 					Sign up
 				</Link>
+
 				<Notification />
 				<ModeToggle />
+
+				<MobileMenu />
 			</div>
 		</nav>
 	);

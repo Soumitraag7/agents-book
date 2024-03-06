@@ -29,7 +29,9 @@ export default function RootLayout({
 				>
 					<Navbar />
 					<main className="max-w-4xl mx-auto px-4">{children}</main>
-					<Footer />
+					<div className="mt-10">
+						<Footer />
+					</div>
 				</ThemeProvider>
 			</body>
 		</html>
