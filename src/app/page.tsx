@@ -1,3 +1,6 @@
+import Image from 'next/image';
+import Link from 'next/link';
+
 import { Button } from '@/components/ui/button';
 import {
 	Card,
@@ -7,56 +10,13 @@ import {
 	CardHeader,
 	CardTitle
 } from '@/components/ui/card';
-import Image from 'next/image';
-import Link from 'next/link';
 
-const data = [
-	{
-		titleImage: 'IMG-TITLE',
-		title: 'TEST-TITLE',
-		smallDescription:
-			'SMALL-DESCRIPTION LOREM IPSUM, DOLOR SIT AMET CONSECTETUR ADIPISICING ELIT. OBCAECATI, TOTAM! LOREM IPSUM DOLOR SIT, AMET CONSECTETUR ADIPISICING ELIT. EA, APERIAM?',
-		price: '20',
-		currentSlug: 'CURRENT-SLUG-1'
-	},
-	{
-		titleImage: 'IMG-TITLE',
-		title: 'TEST-TITLE',
-		smallDescription:
-			'SMALL-DESCRIPTION LOREM IPSUM, DOLOR SIT AMET CONSECTETUR ADIPISICING ELIT. OBCAECATI, TOTAM! LOREM IPSUM DOLOR SIT, AMET CONSECTETUR ADIPISICING ELIT. EA, APERIAM?',
-		price: '20',
-		currentSlug: 'CURRENT-SLUG-2'
-	},
-	{
-		titleImage: 'IMG-TITLE',
-		title: 'TEST-TITLE',
-		smallDescription:
-			'SMALL-DESCRIPTION LOREM IPSUM, DOLOR SIT AMET CONSECTETUR ADIPISICING ELIT. OBCAECATI, TOTAM! LOREM IPSUM DOLOR SIT, AMET CONSECTETUR ADIPISICING ELIT. EA, APERIAM?',
-		price: '20',
-		currentSlug: 'CURRENT-SLUG-3'
-	},
-	{
-		titleImage: 'IMG-TITLE',
-		title: 'TEST-TITLE',
-		smallDescription:
-			'SMALL-DESCRIPTION LOREM IPSUM, DOLOR SIT AMET CONSECTETUR ADIPISICING ELIT. OBCAECATI, TOTAM! LOREM IPSUM DOLOR SIT, AMET CONSECTETUR ADIPISICING ELIT. EA, APERIAM?',
-		price: '20',
-		currentSlug: 'CURRENT-SLUG-4'
-	},
-	{
-		titleImage: 'IMG-TITLE',
-		title: 'TEST-TITLE',
-		smallDescription:
-			'SMALL-DESCRIPTION LOREM IPSUM, DOLOR SIT AMET CONSECTETUR ADIPISICING ELIT. OBCAECATI, TOTAM! LOREM IPSUM DOLOR SIT, AMET CONSECTETUR ADIPISICING ELIT. EA, APERIAM?',
-		price: '20',
-		currentSlug: 'CURRENT-SLUG-5'
-	}
-];
+import { DEMO_CARD_INFO } from '@/constants';
 
 export default function Home() {
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-5 gap-5">
-			{data.map((post, idx) => (
+			{DEMO_CARD_INFO.map((post, idx) => (
 				<Card key={idx}>
 					<Image
 						// src={urlFor(post.titleImage).url()}
