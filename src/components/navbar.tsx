@@ -12,16 +12,17 @@ export default function Navbar() {
 					agents<span className="text-[#d90706] font-bold">Book</span>
 				</h1>
 			</Link>
-			<div className="flex items-center justify-center gap-3">
+
+			<div className="flex items-center justify-center gap-3 ">
 				<Link
 					href="/sign-in"
-					className="dark:hover:text-blue-200 hover:text-gray-500 whitespace-nowrap"
+					className="dark:hover:text-blue-200 hover:text-gray-500 whitespace-nowrap hidden md:block"
 				>
 					Sign in
 				</Link>
 				<Link
 					href="/sign-up"
-					className="dark:hover:text-blue-200 hover:text-gray-500 whitespace-nowrap"
+					className="dark:hover:text-blue-200 hover:text-gray-500 whitespace-nowrap hidden md:block"
 				>
 					Sign up
 				</Link>

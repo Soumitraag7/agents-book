@@ -20,8 +20,11 @@ export function Notification() {
 					<span className="sr-only">Notification</span>
 				</Button>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent align="end" className="w-[300px]">
-				<DropdownMenuItem className="">
+			<DropdownMenuContent
+				align="end"
+				className="w-[300px] h-[500px] overflow-y-scroll "
+			>
+				<DropdownMenuItem>
 					Notification 1 Lorem ipsum dolor, sit amet consectetur adipisicing
 					elit. Itaque ab doloremque nihil? Tenetur veniam quia dolor officiis
 					porro molestias ipsum!
