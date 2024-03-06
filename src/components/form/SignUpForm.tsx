@@ -15,7 +15,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import Link from 'next/link';
-import GoogleSignInButton from '../GoogleSignInButton';
+import GoogleSignInButton from '../google-sign-in-button';
 import Image from 'next/image';
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 
