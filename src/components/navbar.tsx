@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ModeToggle } from '@/components/mode-toggle';
 import { Notification } from './notification';
 import MobileMenu from './mobile-menu';
+import { NAV_LINKS } from '@/constants';
 
 export default function Navbar() {
 	return (
@@ -13,25 +14,40 @@ export default function Navbar() {
 				</h1>
 			</Link>
 
-			<div className="flex items-center justify-center gap-3 ">
+			<ul className="hidden h-full gap-10 pl-2 lg:flex">
+				{NAV_LINKS.map(link => (
+					<Link
+						href={link.href}
+						key={link.key}
+						className="regular-16 text-gray-50 flexCenter cursor-pointer transition-all hover:font-bold"
+					>
+						{link.label}
+					</Link>
+				))}
+
+				{/* <Notification /> */}
+				<ModeToggle />
+			</ul>
+
+			{/* <div className="hidden lg:flex gap-5 pl-2">
 				<Link
 					href="/sign-in"
-					className="dark:hover:text-blue-200 hover:text-gray-500 whitespace-nowrap hidden md:block"
+					className="regular-16 text-gray-50 flexCenter cursor-pointer transition-all hover:font-bold whitespace-nowrap "
 				>
 					Sign in
 				</Link>
 				<Link
 					href="/sign-up"
-					className="dark:hover:text-blue-200 hover:text-gray-500 whitespace-nowrap hidden md:block"
+					className="regular-16 text-gray-50 flexCenter cursor-pointer transition-all hover:font-bold whitespace-nowrap "
 				>
 					Sign up
 				</Link>
 
 				<Notification />
 				<ModeToggle />
+			</div> */}
 
-				<MobileMenu />
-			</div>
+			<MobileMenu />
 		</nav>
 	);
 }
