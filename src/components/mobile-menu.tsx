@@ -16,7 +16,7 @@ import Link from 'next/link';
 
 function MobileMenu() {
 	return (
-		<div className=" md:hidden">
+		<div className=" lg:hidden">
 			<Sheet>
 				<SheetTrigger className="flex items-center justify-center">
 					<Menu />
