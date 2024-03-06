@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 export const revalidate = 30; // revalidate at most 30 seconds
 
-const data = {
+const DEMO_PROD_INFO = {
 	title: 'TEST-TITLE',
 	content:
 		'SMALL-DESCRIPTION LOREM IPSUM, DOLOR SIT AMET CONSECTETUR ADIPISICING ELIT. OBCAECATI, TOTAM! LOREM IPSUM DOLOR SIT, AMET CONSECTETUR ADIPISICING ELIT. EA, APERIAM? Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae aspernatur sit corrupti voluptate. In harum velit odit, voluptatum nobis minus ratione laudantium deserunt, nam provident ducimus, optio aspernatur doloribus voluptates similique quam repellat inventore reprehenderit hic! Saepe vero hic voluptatibus.',
@@ -24,12 +24,12 @@ export default async function SingleProduct({
 					Soumitra
 				</span>
 				<span className="mt-2 block text-3xl text-center leading-8 font-bold tracking-tight sm:text-4xl">
-					{data.title}
+					{DEMO_PROD_INFO.title}
 				</span>
 			</h1>
 
 			<Image
-				// src={urlFor(data.titleImage).url()}
+				// src={urlFor(DEMO_PROD_INFO.titleImage).url()}
 				src={'/images/demo-img.jpg'}
 				width={500}
 				height={500}
@@ -52,13 +52,14 @@ export default async function SingleProduct({
 						Posted: <span className="text-gray-500">3hr</span>
 					</p>
 					<p>
-						Price: <span className="text-gray-500">${data.price}</span>
+						Price:{' '}
+						<span className="text-gray-500">${DEMO_PROD_INFO.price}</span>
 					</p>
 				</div>
 			</div>
 
 			<div className="mt-4 prose prose-blue prose-lg dark:prose-invert prose-li:marker:text-primary prose-a:text-primary">
-				{data.content}
+				{DEMO_PROD_INFO.content}
 			</div>
 
 			<Button className="w-full mt-7">Contact seller</Button>
