@@ -1,17 +1,15 @@
-import Hero from '@/components/Hero';
-import ProductCard from '@/components/product-card';
-import { SignedIn, SignedOut } from '@clerk/nextjs';
+import Hero from '@/components/hero';
+import Pricing from '@/components/pricing';
+import SiteStats from '@/components/site-stats';
+import TrustedBy from '@/components/trusted-by';
 
 export default function Home() {
 	return (
 		<>
-			<SignedOut>
-				<Hero />
-			</SignedOut>
-
-			<SignedIn>
-				<ProductCard />
-			</SignedIn>
+			<Hero />
+			<TrustedBy />
+			<SiteStats />
+			<Pricing />
 		</>
 	);
 }
