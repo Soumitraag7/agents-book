@@ -83,7 +83,7 @@ export const plans = [
 export default function Pricing() {
 	return (
 		<section className="max-container padding-container flex flex-col gap-20 py-10 pb-32 md:gap-28 lg:py-20 xl:flex-col">
-			<h2 className="bold-40 text-dark-600 flexCenter">Pricing</h2>
+			<h2 className="bold-40 text-dark-600 flexCenter capitalize">Pricing</h2>
 
 			<ul className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-9 xl:grid-cols-3">
 				{plans.map(plan => (
