@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from './ui/button';
 import Link from 'next/link';
 
@@ -15,7 +14,7 @@ export default function Hero() {
 
 				<div className="flex flex-col w-full gap-3 sm:flex-row my-11">
 					<Button className="px-8 py-5 rounded-full bold-16 whitespace-nowrap">
-						<Link href={'sign-up'}>Get Started</Link>
+						<Link href="/sign-up">Get Started</Link>
 					</Button>
 				</div>
 			</div>

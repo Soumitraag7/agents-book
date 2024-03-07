@@ -6,8 +6,8 @@ import TrustedBy from '@/components/trusted-by';
 export default function Home() {
 	return (
 		<>
-			<TrustedBy />
 			<Hero />
+			<TrustedBy />
 			<SiteStats />
 			<Pricing />
 		</>
