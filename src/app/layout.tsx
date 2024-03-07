@@ -37,7 +37,7 @@ export default function RootLayout({
 					>
 						<Navbar />
 
-						<main className="max-w-4xl mx-auto px-4">{children}</main>
+						<main className="relative overflow-hidden">{children}</main>
 
 						<Footer />
 					</ThemeProvider>
