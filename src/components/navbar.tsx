@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+
 import { ModeToggle } from '@/components/mode-toggle';
 import { Notification } from './notification';
 import MobileMenu from './mobile-menu';
@@ -14,17 +16,22 @@ export default function Navbar() {
 				</h1>
 			</Link>
 
-			<ul className="hidden h-full gap-10 pl-2 lg:flex">
-				{NAV_LINKS.map(link => (
-					<Link
-						href={link.href}
-						key={link.key}
-						className="regular-16 text-gray-50 flexCenter cursor-pointer transition-all hover:font-bold"
-					>
-						{link.label}
-					</Link>
-				))}
+			<ul className="hidden h-full gap-6 pl-2 lg:flex">
+				<SignedOut>
+					{NAV_LINKS.map(link => (
+						<Link
+							href={link.href}
+							key={link.key}
+							className="regular-16 text-gray-50 flexCenter cursor-pointer transition-all hover:font-bold"
+						>
+							{link.label}
+						</Link>
+					))}
+				</SignedOut>
 
+				<SignedIn>
+					<UserButton afterSignOutUrl="/" />
+				</SignedIn>
 				{/* <Notification /> */}
 				<ModeToggle />
 			</ul>
