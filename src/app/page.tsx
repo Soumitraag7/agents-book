@@ -1,12 +1,12 @@
-import Hero from '@/components/hero';
-import Pricing from '@/components/pricing';
-import SiteStats from '@/components/site-stats';
-import TrustedBy from '@/components/trusted-by';
+import Hero from '@/components/Hero';
+import Pricing from '@/components/Pricing';
+import SiteStats from '@/components/SiteStats';
+import TrustedBy from '@/components/TrustedBy';
 
 export default function Home() {
 	return (
 		<>
-			{/* <Hero /> */}
+			<Hero />
 			<TrustedBy />
 			<SiteStats />
 			<Pricing />
