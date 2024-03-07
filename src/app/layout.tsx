@@ -6,6 +6,8 @@ import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 
+import { Analytics } from '@vercel/analytics/react';
+
 import { ClerkProvider } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
 
@@ -41,6 +43,7 @@ export default function RootLayout({
 
 						<Footer />
 					</ThemeProvider>
+					<Analytics />
 				</body>
 			</html>
 		</ClerkProvider>
