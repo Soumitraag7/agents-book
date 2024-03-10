@@ -6,12 +6,15 @@ const UserSchema = new Schema({
 		required: true,
 		unique: true
 	},
-	email: {
+	firstName: {
 		type: String,
-		required: true,
-		unique: true
+		required: true
 	},
-	username: {
+	lastName: {
+		type: String,
+		required: true
+	},
+	email: {
 		type: String,
 		required: true,
 		unique: true
@@ -19,21 +22,20 @@ const UserSchema = new Schema({
 	photo: {
 		type: String,
 		required: true
-	},
-	firstName: {
-		type: String
-	},
-	lastName: {
-		type: String
-	},
-	planId: {
-		type: Number,
-		default: 1
-	},
-	creditBalance: {
-		type: Number,
-		default: 10
 	}
+	// username: {
+	// 	type: String,
+	// 	required: true,
+	// 	unique: true
+	// },
+	// planId: {
+	// 	type: Number,
+	// 	default: 1
+	// },
+	// creditBalance: {
+	// 	type: Number,
+	// 	default: 10
+	// }
 });
 
 const User = models?.User || model('User', UserSchema);
