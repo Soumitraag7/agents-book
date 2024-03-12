@@ -1,6 +1,6 @@
 import mongoose, { Mongoose } from 'mongoose';
 
-const MONGODB_URL = process.env.MONGODB_URL;
+const DATABASE_URL = process.env.DATABASE_URL;
 
 interface MongooseConnection {
 	conn: Mongoose | null;
@@ -19,11 +19,11 @@ if (!cached) {
 export const connectToDatabase = async () => {
 	if (cached.conn) return cached.conn;
 
-	if (!MONGODB_URL) throw new Error('Missing MONGODB_URL');
+	if (!DATABASE_URL) throw new Error('Missing DATABASE_URL');
 
 	cached.promise =
 		cached.promise ||
-		mongoose.connect(MONGODB_URL, {
+		mongoose.connect(DATABASE_URL, {
 			dbName: 'agentsBook',
 			bufferCommands: false
 		});
