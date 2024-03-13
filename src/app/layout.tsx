@@ -3,8 +3,6 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 
 import { ThemeProvider } from '@/components/theme-provider';
-import Navbar from '@/components/navbar';
-import Footer from '@/components/footer';
 
 import { Analytics } from '@vercel/analytics/react';
 
@@ -37,11 +35,7 @@ export default function RootLayout({
 						enableSystem
 						disableTransitionOnChange
 					>
-						<Navbar />
-
 						<main className="relative overflow-hidden">{children}</main>
-
-						<Footer />
 					</ThemeProvider>
 					<Analytics />
 				</body>
