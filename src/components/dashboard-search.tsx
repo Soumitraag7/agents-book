@@ -20,7 +20,7 @@ import {
 } from '@/components/ui/command';
 import { useState } from 'react';
 
-export function DashbordSearch() {
+export function DashboardSearch() {
 	const [open, setOpen] = useState<boolean>(false);
 
 	return (

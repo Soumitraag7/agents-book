@@ -13,7 +13,7 @@ import { Command, CommandGroup, CommandItem, CommandList } from './ui/command';
 
 import UserItem from './user-item';
 
-export default function DashbordSidebar() {
+export default function DashboardSidebar() {
 	// DASHBORD MENU_LIST
 	const MENU_LIST = [
 		{

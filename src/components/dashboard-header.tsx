@@ -10,9 +10,9 @@ import { BellIcon } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
-import { DashbordSearch } from '@/components/dashbord-search';
+import { DashboardSearch } from '@/components/dashboard-search';
 
-export default function DashbordHeader() {
+export default function DashboardHeader() {
 	const [notifications, setNotifications] = useState<any>([
 		{
 			text: 'This is a notification',
@@ -28,7 +28,7 @@ export default function DashbordHeader() {
 
 	return (
 		<div className="w-full grid grid-cols-2 gap-4 p-4 border-b">
-			<DashbordSearch />
+			<DashboardSearch />
 
 			<div className="flex items-center justify-end">
 				<DropdownMenu>

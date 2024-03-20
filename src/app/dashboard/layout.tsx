@@ -1,8 +1,8 @@
-import DashbordHeader from '@/components/dashbord-header';
-import DashbordSidebar from '@/components/dashbord-sidebar';
+import DashboardHeader from '@/components/dashboard-header';
+import DashboardSidebar from '@/components/dashboard-sidebar';
 import React from 'react';
 
-export default function DashbordLayout({
+export default function DashboardLayout({
 	children
 }: Readonly<{
 	children: React.ReactNode;
@@ -10,10 +10,10 @@ export default function DashbordLayout({
 	return (
 		<>
 			<div className="hidden lg:flex">
-				<DashbordSidebar />
+				<DashboardSidebar />
 			</div>
 			<main className="grid w-full h-full lg:pl-[300px]">
-				<DashbordHeader />
+				<DashboardHeader />
 				<div className="p-8">{children}</div>
 			</main>
 		</>
