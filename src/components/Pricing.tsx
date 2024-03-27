@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import { Button } from './ui/button';
+import { Button } from '@/components/ui/button';
 
 export const plans = [
 	{
@@ -32,7 +32,7 @@ export const plans = [
 		_id: 2,
 		name: 'Pro Package',
 		icon: '/assets/icons/free-plan.svg',
-		price: 40,
+		price: 49,
 		credits: 120,
 		inclusions: [
 			{

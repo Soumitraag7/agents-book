@@ -2,10 +2,11 @@ import Link from 'next/link';
 
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 
-import { ModeToggle } from '@/components/mode-toggle';
-import { Notification } from './notification';
-import MobileMenu from './mobile-menu';
 import { NAV_LINKS } from '@/constants';
+
+import { ModeToggle } from '@/components/mode-toggle';
+import { Notification } from '@/components/notification';
+import MobileMenu from '@/components/mobile-menu';
 
 export default function Navbar() {
 	return (
@@ -30,10 +31,16 @@ export default function Navbar() {
 				</SignedOut>
 
 				<SignedIn>
+					<Link
+						href="/dashboard"
+						className="regular-16 flexCenter cursor-pointer transition-all hover:font-bold"
+					>
+						Dashboard
+					</Link>
 					<UserButton afterSignOutUrl="/" />
 				</SignedIn>
 				{/* <Notification /> */}
-				<ModeToggle />
+				{/* <ModeToggle /> */}
 			</ul>
 
 			{/* <div className="hidden lg:flex gap-5 pl-2">

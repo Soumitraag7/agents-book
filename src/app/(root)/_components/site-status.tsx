@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function SiteStats() {
+export default function SiteStatus() {
 	return (
 		<section className="max-container padding-container flex flex-col gap-20 py-10 pb-32 md:gap-28 lg:py-20 xl:flex-row">
 			<div className="w-full bg-blue-500  flexCenter flex-wrap lg:flex-row gap-10 rounded-2xl py-9 ">

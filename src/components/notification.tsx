@@ -27,7 +27,7 @@ export function Notification() {
 				<DropdownMenuItem>
 					Notification 1 Lorem ipsum dolor, sit amet consectetur adipisicing
 					elit. Itaque ab doloremque nihil? Tenetur veniam quia dolor officiis
-					porro molestias ipsum!
+					porro molestias ipsum!!
 				</DropdownMenuItem>
 				<DropdownMenuItem>
 					Notification 2 Lorem ipsum dolor, sit amet consectetur adipisicing

@@ -1,9 +1,9 @@
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-
-import { DEMO_CARD_INFO } from '@/constants';
 import Image from 'next/image';
 import Link from 'next/link';
+import { DEMO_CARD_INFO } from '@/constants';
+
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 
 export default function ProductCard() {
 	return (

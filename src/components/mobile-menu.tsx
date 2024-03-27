@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import {
 	Sheet,
 	SheetContent,
@@ -9,10 +10,10 @@ import {
 	SheetTrigger
 } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
-import { Label } from './ui/label';
-import { Input } from './ui/input';
-import { Button } from './ui/button';
-import Link from 'next/link';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { SignedIn } from '@clerk/nextjs';
 
 function MobileMenu() {
 	return (
@@ -32,8 +33,10 @@ function MobileMenu() {
 
 					<div className="grid gap-4 py-4">
 						<Link href="/">Home</Link>
-						<Link href="/">Dashbord</Link>
-						<Link href="/">Profile</Link>
+						<SignedIn>
+							<Link href="/dashboard">Dashboard</Link>
+							<Link href="/">Profile</Link>
+						</SignedIn>
 						<Link href="/sign-in" className="whitespace-nowrap ">
 							Sign in
 						</Link>

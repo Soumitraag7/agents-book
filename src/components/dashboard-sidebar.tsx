@@ -9,7 +9,12 @@ import {
 	Settings,
 	User
 } from 'lucide-react';
-import { Command, CommandGroup, CommandItem, CommandList } from './ui/command';
+import {
+	Command,
+	CommandGroup,
+	CommandItem,
+	CommandList
+} from '@/components/ui/command';
 
 import UserItem from './user-item';
 

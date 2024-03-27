@@ -1,14 +1,14 @@
-import Hero from '@/components/Hero';
-import Pricing from '@/components/Pricing';
-import SiteStats from '@/components/SiteStats';
-import TrustedBy from '@/components/TrustedBy';
+import Hero from '@/app/(root)/_components/hero';
+import Pricing from '@/components/pricing';
+import SiteStatus from '@/app/(root)/_components/site-status';
+import TrustedBy from '@/app/(root)/_components/trusted-by';
 
 export default function Home() {
 	return (
 		<>
 			<Hero />
 			<TrustedBy />
-			<SiteStats />
+			<SiteStatus />
 			<Pricing />
 		</>
 	);

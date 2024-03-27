@@ -35,7 +35,7 @@ export default function RootLayout({
 						enableSystem
 						disableTransitionOnChange
 					>
-						<main className="relative overflow-hidden">{children}</main>
+						<main className="overflow-hidden">{children}</main>
 					</ThemeProvider>
 					<Analytics />
 				</body>

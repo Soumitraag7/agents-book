@@ -1,5 +1,5 @@
-import { UserButton, useUser } from '@clerk/nextjs';
 import React from 'react';
+import { UserButton, useUser } from '@clerk/nextjs';
 
 export default function UserItem() {
 	const { isLoaded, user } = useUser();
