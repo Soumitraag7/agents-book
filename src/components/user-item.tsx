@@ -1,8 +1,13 @@
 import React from 'react';
 import { UserButton, useUser } from '@clerk/nextjs';
+import { useWindowWidth } from '@react-hook/window-size';
 
 export default function UserItem() {
 	const { isLoaded, user } = useUser();
+
+	const onlyWidth = useWindowWidth();
+	const mobileWidth = onlyWidth < 768;
+
 	return (
 		<div className="flex items-center justify-between gap-2 border rounded-[8px] p-2">
 			<div className=" rounded-full min-h-10 min-w-10 bg-emerald-500 text-white font-[700] flex items-center justify-center">
