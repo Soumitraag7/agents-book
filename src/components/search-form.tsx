@@ -105,7 +105,7 @@ export default function SearchForm() {
 					className="flex flex-col lg:flex-row lg:max-w-6xl lg:mx-auto items-center justify-center space-x-0 lg:space-x-2 space-y-4 lg:space-y-0 rounded-lg"
 				>
 					{/* TRIP TYPE */}
-					<div className="grid w-full  lg:max-w-28 items-center gap-1.5">
+					{/* <div className="grid w-full  lg:max-w-28 items-center gap-1.5">
 						<FormField
 							control={form.control}
 							name="tripType"
@@ -132,7 +132,7 @@ export default function SearchForm() {
 								</FormItem>
 							)}
 						/>
-					</div>
+					</div> */}
 
 					{/* LOCATION */}
 					<div className="grid w-full lg:max-w-sm items-center gap-1.5">
@@ -267,8 +267,8 @@ export default function SearchForm() {
 						</div>
 					)}
 
+					{/* SEAT TYPE */}
 					<div className="flex w-full items-center space-x-2">
-						{/* SEAT TYPE */}
 						<div className="grid items-center flex-1">
 							<FormField
 								control={form.control}
@@ -302,6 +302,7 @@ export default function SearchForm() {
 							/>
 						</div>
 
+						{/* SUBMIT BUTTON */}
 						<div className="mt-auto">
 							<Button type="submit" className="bg-blue-500 text-base">
 								Search
