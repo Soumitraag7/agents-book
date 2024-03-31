@@ -4,10 +4,11 @@ import { DEMO_CARD_INFO } from '@/constants';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 
-export default function ProductCard() {
+export default function PostCard() {
 	return (
-		<div className="max-container padding-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+		<div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
 			{DEMO_CARD_INFO.map((post, idx) => (
 				<Card key={idx}>
 					<Image
@@ -21,6 +22,17 @@ export default function ProductCard() {
 
 					<CardContent className="mt-5">
 						<h3 className="text-lg line-clamp-2 font-bold">{post.title}</h3>
+
+						{/* <div className="flex items-center justify-between py-2 mt-2">
+							<Avatar className="w-7 h-7">
+								<AvatarImage src="https://github.com/shadcn.png" />
+								<AvatarFallback>CN</AvatarFallback>
+							</Avatar>
+
+							<Button size="sm" variant="default">
+								Follow
+							</Button>
+						</div> */}
 
 						<div className="flex items-center justify-between">
 							<p>
@@ -36,7 +48,9 @@ export default function ProductCard() {
 						</p>
 
 						<Button asChild className="w-full mt-7">
-							<Link href={`/product/${post.currentSlug}`}>Read More</Link>
+							<Link href={`/dashboard/post/${post.currentSlug}`}>
+								Read More
+							</Link>
 						</Button>
 					</CardContent>
 				</Card>
