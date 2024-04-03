@@ -1,24 +1,35 @@
 import { Schema, model, models } from 'mongoose';
 
-const ProfileSchema = new Schema({
-	agencyName: {
-		type: String,
-		required: true
+const ProfileSchema = new Schema(
+	{
+		agencyName: {
+			type: String,
+			trim: true,
+			required: true
+		},
+		address: {
+			type: String,
+			trim: true,
+			required: true
+		},
+		phoneNumber: {
+			type: Number,
+			trim: true,
+			required: true
+		},
+		followee: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'User'
+			}
+		],
+		user: {
+			type: Schema.Types.ObjectId,
+			ref: 'User'
+		}
 	},
-	address: {
-		type: String,
-		required: true
-	},
-	phone: {
-		type: Number,
-		required: true
-	},
-	user: {
-		type: Schema.Types.ObjectId,
-		ref: 'User',
-		required: true
-	}
-});
+	{ timestamps: true }
+);
 
 const Profile = models?.Profile || model('Profile', ProfileSchema);
 
