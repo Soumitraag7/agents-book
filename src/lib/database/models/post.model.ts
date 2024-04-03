@@ -1,23 +1,38 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, models } from 'mongoose';
 
 // Define product schema
 const productSchema = new Schema(
 	{
-		title: {
+		from: {
 			type: String,
 			required: true
 		},
-		description: {
+		to: {
 			type: String,
 			required: true
 		},
-		image: String,
-		price: {
+		quantity: {
 			type: Number,
 			required: true
 		},
-		totalItems: {
+		departureTime: {
 			type: Number,
+			required: true
+		},
+		arivalTime: {
+			type: Number,
+			required: true
+		},
+		departureDate: {
+			type: Date,
+			required: true
+		},
+		arivalDate: {
+			type: Date,
+			required: true
+		},
+		seatType: {
+			type: String,
 			required: true
 		},
 		createdBy: {
@@ -29,5 +44,6 @@ const productSchema = new Schema(
 	{ timestamps: true }
 );
 
-// Create Product model
-module.exports = model('Product', productSchema);
+const Product = models?.Product || model('Product', productSchema);
+
+export default Product;

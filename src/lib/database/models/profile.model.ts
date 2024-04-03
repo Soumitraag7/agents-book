@@ -1,31 +1,25 @@
 import { Schema, model, models } from 'mongoose';
 
 const ProfileSchema = new Schema({
-	clerkId: {
-		type: String,
-		required: true,
-		unique: true
-	},
-	photo: {
+	agencyName: {
 		type: String,
 		required: true
 	},
-	firstName: {
-		type: String
+	address: {
+		type: String,
+		required: true
 	},
-	lastName: {
-		type: String
-	},
-	planId: {
+	phone: {
 		type: Number,
-		default: 1
+		required: true
 	},
-	creditBalance: {
-		type: Number,
-		default: 10
+	user: {
+		type: Schema.Types.ObjectId,
+		ref: 'User',
+		required: true
 	}
 });
 
-const User = models?.User || model('User', ProfileSchema);
+const Profile = models?.Profile || model('Profile', ProfileSchema);
 
-export default User;
+export default Profile;

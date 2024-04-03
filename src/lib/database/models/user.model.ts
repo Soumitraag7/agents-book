@@ -1,3 +1,4 @@
+import { AvailableUserRoles, UserRolesEnum } from '@/constants';
 import { Schema, model, models } from 'mongoose';
 
 const UserSchema = new Schema({
@@ -21,6 +22,12 @@ const UserSchema = new Schema({
 	},
 	photo: {
 		type: String,
+		required: true
+	},
+	role: {
+		type: String,
+		enum: AvailableUserRoles,
+		default: UserRolesEnum.USER,
 		required: true
 	}
 	// username: {

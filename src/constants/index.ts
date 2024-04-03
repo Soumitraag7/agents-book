@@ -130,3 +130,12 @@ export const DEMO_CARD_INFO = [
 		currentSlug: 'CURRENT-SLUG-5'
 	}
 ];
+
+// USER ROLE
+export const UserRolesEnum = {
+	ADMIN: 'ADMIN',
+	USER: 'USER',
+	SUBSCRIBER: 'SUBSCRIBER'
+};
+
+export const AvailableUserRoles = Object.values(UserRolesEnum);
