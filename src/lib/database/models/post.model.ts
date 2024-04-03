@@ -37,8 +37,7 @@ const productSchema = new Schema(
 		},
 		createdBy: {
 			type: Schema.Types.ObjectId,
-			ref: 'User',
-			required: true
+			ref: 'User'
 		}
 	},
 	{ timestamps: true }
