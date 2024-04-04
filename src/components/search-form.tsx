@@ -35,14 +35,14 @@ import {
 } from '@/components/ui/select';
 
 export const formSchema = z.object({
-	tripType: z.enum(['one-way', 'round-trip']),
-	seatType: z.enum(['economy', 'preminum-economy', 'business', 'first']),
 	location: z.string().min(2, 'Location is required').max(50),
-	dates: z.object({
-		from: z.date(),
-		to: z.date()
-	}),
+	seatType: z.enum(['economy', 'preminum-economy', 'business', 'first']),
 	date: z.date()
+	// tripType: z.enum(['one-way', 'round-trip']),
+	// dates: z.object({
+	// 	from: z.date(),
+	// 	to: z.date()
+	// }),
 });
 // .refine(
 // 	data => {
@@ -58,43 +58,46 @@ export const formSchema = z.object({
 // );
 
 export default function SearchForm() {
-	const router = useRouter();
+	// const router = useRouter();
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			tripType: 'one-way',
 			location: '',
-			dates: {
-				from: undefined,
-				to: undefined
-			},
+			// tripType: 'one-way',
+			// dates: {
+			// 	from: undefined,
+			// 	to: undefined
+			// },
 			date: undefined,
 			seatType: 'economy'
 		}
 	});
 
-	const tripType = form.watch('tripType');
+	// const tripType = form.watch('tripType');
+
+	// console.log(form.getValues());
 
 	function onSubmit(values: z.infer<typeof formSchema>) {
-		console.log(values);
+		console.log('onSubmit :: ', values);
+		form.reset();
 
-		const checkin_monthday = values.dates.from.getDate().toString();
-		const checkin_month = (values.dates.from.getMonth() + 1).toString();
-		const checkin_year = values.dates.from.getFullYear().toString();
-		const checkout_monthday = values.dates.to.getDate().toString();
-		const checkout_month = (values.dates.to.getMonth() + 1).toString();
-		const checkout_year = values.dates.to.getFullYear().toString();
+		// const checkin_monthday = values.dates.from.getDate().toString();
+		// const checkin_month = (values.dates.from.getMonth() + 1).toString();
+		// const checkin_year = values.dates.from.getFullYear().toString();
+		// const checkout_monthday = values.dates.to.getDate().toString();
+		// const checkout_month = (values.dates.to.getMonth() + 1).toString();
+		// const checkout_year = values.dates.to.getFullYear().toString();
 
-		const checkin = `${checkin_year}-${checkin_month}-${checkin_monthday}`;
-		const checkout = `${checkout_year}-${checkout_month}-${checkout_monthday}`;
+		// const checkin = `${checkin_year}-${checkin_month}-${checkin_monthday}`;
+		// const checkout = `${checkout_year}-${checkout_month}-${checkout_monthday}`;
 
-		const url = new URL('https://www.booking.com/searchresults.html');
-		url.searchParams.set('ss', values.location);
-		url.searchParams.set('checkin', checkin);
-		url.searchParams.set('checkout', checkout);
+		// const url = new URL('https://www.booking.com/searchresults.html');
+		// url.searchParams.set('ss', values.location);
+		// url.searchParams.set('checkin', checkin);
+		// url.searchParams.set('checkout', checkout);
 
-		router.push(`/search?url=${url.href}`);
+		// router.push(`/search?url=${url.href}`);
 	}
 
 	return (
@@ -157,7 +160,7 @@ export default function SearchForm() {
 					</div>
 
 					{/* CALENDAR */}
-					{tripType === 'round-trip' ? (
+					{/* {tripType === 'round-trip' ? (
 						<div className="grid w-full lg:max-w-sm flex-1 items-center gap-1.5">
 							<FormField
 								control={form.control}
@@ -265,7 +268,58 @@ export default function SearchForm() {
 								)}
 							/>
 						</div>
-					)}
+					)} */}
+
+					<div className="grid w-full lg:max-w-sm flex-1 items-center gap-1.5">
+						<FormField
+							control={form.control}
+							name="date"
+							render={({ field }) => (
+								<FormItem className="flex flex-col">
+									<FormLabel className="text-white">Date</FormLabel>
+
+									<Popover>
+										<PopoverTrigger asChild>
+											<FormControl>
+												<Button
+													id="date"
+													name="date"
+													variant={'outline'}
+													className={cn(
+														'w-full lg:w-[300px] justify-start text-left font-normal',
+														!field.value && 'text-muted-foreground'
+													)}
+												>
+													<CalendarIcon className="mr-3 h-4 w-4 opacity-50" />
+													{field.value ? (
+														<>{format(field.value, 'LLL dd, y')}</>
+													) : (
+														<span>Select your date</span>
+													)}
+												</Button>
+											</FormControl>
+										</PopoverTrigger>
+										<PopoverContent className="w-auto p-0" align="start">
+											<Calendar
+												// onDayClick={}
+												initialFocus
+												mode="single"
+												selected={field.value}
+												defaultMonth={field.value}
+												onSelect={field.onChange}
+												numberOfMonths={1}
+												disabled={date =>
+													date < new Date(new Date().setHours(0, 0, 0, 0))
+												}
+											/>
+										</PopoverContent>
+									</Popover>
+
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+					</div>
 
 					{/* SEAT TYPE */}
 					<div className="flex w-full items-center space-x-2">

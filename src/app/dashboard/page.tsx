@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 
 import PageTitle from '@/app/dashboard/_components/page-title';
 import PostCard from '@/components/post-card';
