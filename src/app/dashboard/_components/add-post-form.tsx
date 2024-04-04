@@ -53,7 +53,8 @@ export default function AddPostForm() {
 			arivalTime: '',
 			departureTime: '',
 			arivalDate: undefined,
-			departureDate: undefined
+			departureDate: undefined,
+			seatType: 'economy'
 		}
 	});
 
