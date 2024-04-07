@@ -34,13 +34,23 @@ import {
 } from '@/components/ui/select';
 
 const FormSchema = z.object({
-	from: z.string().min(1, 'From is required').max(100),
-	to: z.string().min(1, 'To is required').max(100),
-	arivalTime: z.string().min(1, 'Arival time is required'),
-	departureTime: z.string().min(1, 'Departure time is required'),
-	arivalDate: z.date(),
-	departureDate: z.date(),
+	from: z.string().min(1, 'Please enter a location From').max(100),
+	to: z.string().min(1, 'Please enter a location To').max(100),
+	arivalTime: z.string().min(1, 'Please enter a Arival time'),
+	departureTime: z.string().min(1, 'Please enter a Departure time'),
+	arivalDate: z.date({
+		required_error: 'Please select a arival date',
+		invalid_type_error: "That's not a date!"
+	}),
+	departureDate: z.date({
+		required_error: 'Please select a departure date',
+		invalid_type_error: "That's not a date!"
+	}),
 	seatType: z.enum(['economy', 'preminum-economy', 'business', 'first']),
+	totalTicket: z.string({
+		required_error: 'Please enter number of tickets'
+		// invalid_type_error: 'Age must be a number'
+	}),
 	roundTrip: z.boolean().default(false).optional()
 });
 
@@ -54,6 +64,7 @@ export default function AddPostForm() {
 			departureTime: '',
 			arivalDate: undefined,
 			departureDate: undefined,
+			totalTicket: '',
 			seatType: 'economy'
 		}
 	});
@@ -79,7 +90,7 @@ export default function AddPostForm() {
 								name="from"
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel className="flex">
+										<FormLabel className="text-white flex">
 											From
 											<PlaneTakeoff className="ml-2 h-4 w-4 text-white" />
 										</FormLabel>
@@ -99,7 +110,7 @@ export default function AddPostForm() {
 								name="to"
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel className="flex">
+										<FormLabel className="text-white flex">
 											To <PlaneLanding className="ml-2 h-4 w-4 text-white" />
 										</FormLabel>
 										<FormControl>
@@ -162,7 +173,7 @@ export default function AddPostForm() {
 											</PopoverContent>
 										</Popover>
 
-										<FormMessage />
+										<FormMessage className="text-[#f04438]" />
 									</FormItem>
 								)}
 							/>
@@ -216,7 +227,7 @@ export default function AddPostForm() {
 											</PopoverContent>
 										</Popover>
 
-										<FormMessage />
+										<FormMessage className="text-[#f04438]" />
 									</FormItem>
 								)}
 							/>
@@ -232,7 +243,7 @@ export default function AddPostForm() {
 								name="departureTime"
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel className="flex">
+										<FormLabel className="text-white flex">
 											Departure Time (In BST)
 										</FormLabel>
 										<FormControl>
@@ -251,7 +262,9 @@ export default function AddPostForm() {
 								name="arivalTime"
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel className="flex">Arival Time (In BST)</FormLabel>
+										<FormLabel className="text-white flex">
+											Arival Time (In BST)
+										</FormLabel>
 										<FormControl>
 											<Input {...field} />
 										</FormControl>
@@ -262,8 +275,32 @@ export default function AddPostForm() {
 						</div>
 					</div>
 
-					{/* SEAT TYPE */}
+					{/* SEATS */}
 					<div className=" flex md:flex-row flex-col gap-4">
+						{/* TOTAL TICKETS */}
+						<div className="w-full md:w-1/2 ">
+							<div className="grid items-center flex-1">
+								<FormField
+									control={form.control}
+									name="totalTicket"
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel className="text-white flex">
+												Total Tickets
+											</FormLabel>
+
+											<FormControl>
+												<Input {...field} />
+											</FormControl>
+
+											<FormMessage className="text-[#f04438]" />
+										</FormItem>
+									)}
+								/>
+							</div>
+						</div>
+
+						{/* SEAT TYPE */}
 						<div className="w-full md:w-1/2 ">
 							<div className="grid items-center flex-1">
 								<FormField
