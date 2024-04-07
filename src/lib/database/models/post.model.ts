@@ -1,7 +1,7 @@
 import { Schema, model, models } from 'mongoose';
 
-// Define product schema
-const productSchema = new Schema(
+// Define post schema
+const postSchema = new Schema(
 	{
 		from: {
 			type: String,
@@ -43,6 +43,6 @@ const productSchema = new Schema(
 	{ timestamps: true }
 );
 
-const Product = models?.Product || model('Product', productSchema);
+const Post = models?.Post || model('Post', postSchema);
 
-export default Product;
+export default Post;
