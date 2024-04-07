@@ -34,7 +34,8 @@ export default function Post() {
 						<div className="flex items-center justify-center gap-3 ">
 							<Button asChild size="sm" className="w-full mt-7">
 								<div className="gap-1.5">
-									<FilePenLine /> <span>Edit</span>
+									<FilePenLine className="h-4 w-4 text-black" />
+									<span>Edit</span>
 								</div>
 							</Button>
 
@@ -45,7 +46,7 @@ export default function Post() {
 								className="w-full mt-7"
 							>
 								<div className="gap-1.5">
-									<Trash2 /> <span>Delete</span>
+									<Trash2 className="h-4 w-4 text-white" /> <span>Delete</span>
 								</div>
 							</Button>
 						</div>
