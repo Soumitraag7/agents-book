@@ -11,24 +11,24 @@ const postSchema = new Schema(
 			type: String,
 			required: true
 		},
-		quantity: {
-			type: Number,
-			required: true
-		},
 		departureTime: {
-			type: Number,
+			type: String,
 			required: true
 		},
 		arivalTime: {
-			type: Number,
+			type: String,
 			required: true
 		},
 		departureDate: {
-			type: Date,
+			type: String,
 			required: true
 		},
 		arivalDate: {
-			type: Date,
+			type: String,
+			required: true
+		},
+		totalTicket: {
+			type: String,
 			required: true
 		},
 		seatType: {
