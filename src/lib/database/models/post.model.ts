@@ -20,11 +20,11 @@ const postSchema = new Schema(
 			required: true
 		},
 		departureDate: {
-			type: String,
+			type: Date,
 			required: true
 		},
 		arivalDate: {
-			type: String,
+			type: Date,
 			required: true
 		},
 		totalTicket: {
