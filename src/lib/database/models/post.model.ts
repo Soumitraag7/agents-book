@@ -28,6 +28,14 @@ const postSchema = new Schema(
 			required: true
 		},
 		totalTicket: {
+			type: Number,
+			required: true
+		},
+		pricePerTicket: {
+			type: Number,
+			required: true
+		},
+		airlineName: {
 			type: String,
 			required: true
 		},

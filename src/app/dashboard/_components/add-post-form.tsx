@@ -47,11 +47,21 @@ const FormSchema = z.object({
 		invalid_type_error: "That's not a date!"
 	}),
 	seatType: z.enum(['economy', 'preminum-economy', 'business', 'first']),
-	totalTicket: z.string({
-		required_error: 'Please enter number of tickets'
-		// invalid_type_error: 'Age must be a number'
-	}),
-	roundTrip: z.boolean().default(false).optional()
+	totalTicket: z.coerce
+		.number({
+			required_error: 'Please enter total number of tickets'
+			// invalid_type_error: 'Age must be a number'
+		})
+		.positive('Please enter total number of tickets'),
+	airlineName: z.string().min(1, 'Please enter the airline name'),
+	pricePerTicket: z.coerce
+		.number({
+			required_error: 'Please enter the price'
+			// invalid_type_error: 'Age must be a number'
+		})
+		.positive('Please enter the price/ticket')
+
+	// roundTrip: z.boolean().default(false).optional()
 });
 
 export default function AddPostForm() {
@@ -64,12 +74,14 @@ export default function AddPostForm() {
 			departureTime: '',
 			arivalDate: undefined,
 			departureDate: undefined,
-			totalTicket: '',
+			totalTicket: 0,
+			airlineName: '',
+			pricePerTicket: 0,
 			seatType: 'economy'
 		}
 	});
 
-	const roundTrip = form.watch('roundTrip');
+	// const roundTrip = form.watch('roundTrip');
 
 	const onSubmit = (values: z.infer<typeof FormSchema>) => {
 		console.log(values);
@@ -120,6 +132,70 @@ export default function AddPostForm() {
 									</FormItem>
 								)}
 							/>
+						</div>
+					</div>
+
+					{/* SEATS */}
+					<div className=" flex md:flex-row flex-col gap-4">
+						{/* AIRLINE NAME */}
+						<div className="w-full md:w-1/2 ">
+							<div className="grid items-center flex-1">
+								<FormField
+									control={form.control}
+									name="airlineName"
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel className="text-white flex">
+												Airline Name
+											</FormLabel>
+
+											<FormControl>
+												<Input {...field} />
+											</FormControl>
+
+											<FormMessage className="text-[#f04438]" />
+										</FormItem>
+									)}
+								/>
+							</div>
+						</div>
+
+						{/* SEAT TYPE */}
+						<div className="w-full md:w-1/2 ">
+							<div className="grid items-center flex-1">
+								<FormField
+									control={form.control}
+									name="seatType"
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel className="text-white flex">
+												Seat Type
+											</FormLabel>
+
+											<Select onValueChange={field.onChange}>
+												<FormControl>
+													<SelectTrigger className="w-full">
+														<SelectValue placeholder="Economy" />
+													</SelectTrigger>
+												</FormControl>
+
+												<SelectContent>
+													<SelectGroup>
+														<SelectItem value="economy">Economy</SelectItem>
+														<SelectItem value="preminum-economy">
+															Preminum Economy
+														</SelectItem>
+														<SelectItem value="business">Business</SelectItem>
+														<SelectItem value="first">First</SelectItem>
+													</SelectGroup>
+												</SelectContent>
+											</Select>
+
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+							</div>
 						</div>
 					</div>
 
@@ -246,9 +322,11 @@ export default function AddPostForm() {
 										<FormLabel className="text-white flex">
 											Departure Time (In BST)
 										</FormLabel>
+
 										<FormControl>
-											<Input {...field} />
+											<Input type="time" {...field} />
 										</FormControl>
+
 										<FormMessage className="text-[#f04438]" />
 									</FormItem>
 								)}
@@ -265,9 +343,11 @@ export default function AddPostForm() {
 										<FormLabel className="text-white flex">
 											Arival Time (In BST)
 										</FormLabel>
+
 										<FormControl>
-											<Input {...field} />
+											<Input type="time" {...field} />
 										</FormControl>
+
 										<FormMessage className="text-[#f04438]" />
 									</FormItem>
 								)}
@@ -275,7 +355,7 @@ export default function AddPostForm() {
 						</div>
 					</div>
 
-					{/* SEATS */}
+					{/* PRICE */}
 					<div className=" flex md:flex-row flex-col gap-4">
 						{/* TOTAL TICKETS */}
 						<div className="w-full md:w-1/2 ">
@@ -290,7 +370,7 @@ export default function AddPostForm() {
 											</FormLabel>
 
 											<FormControl>
-												<Input {...field} />
+												<Input type="number" {...field} />
 											</FormControl>
 
 											<FormMessage className="text-[#f04438]" />
@@ -300,38 +380,23 @@ export default function AddPostForm() {
 							</div>
 						</div>
 
-						{/* SEAT TYPE */}
+						{/* PRICE PER TICKET */}
 						<div className="w-full md:w-1/2 ">
 							<div className="grid items-center flex-1">
 								<FormField
 									control={form.control}
-									name="seatType"
+									name="pricePerTicket"
 									render={({ field }) => (
 										<FormItem>
 											<FormLabel className="text-white flex">
-												Seat Type
+												Price/Ticket
 											</FormLabel>
 
-											<Select onValueChange={field.onChange}>
-												<FormControl>
-													<SelectTrigger className="w-full">
-														<SelectValue placeholder="Economy" />
-													</SelectTrigger>
-												</FormControl>
+											<FormControl>
+												<Input type="number" {...field} />
+											</FormControl>
 
-												<SelectContent>
-													<SelectGroup>
-														<SelectItem value="economy">Economy</SelectItem>
-														<SelectItem value="preminum-economy">
-															Preminum Economy
-														</SelectItem>
-														<SelectItem value="business">Business</SelectItem>
-														<SelectItem value="first">First</SelectItem>
-													</SelectGroup>
-												</SelectContent>
-											</Select>
-
-											<FormMessage />
+											<FormMessage className="text-[#f04438]" />
 										</FormItem>
 									)}
 								/>
