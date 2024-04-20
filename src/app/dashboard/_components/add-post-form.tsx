@@ -32,6 +32,8 @@ import {
 	SelectTrigger,
 	SelectValue
 } from '@/components/ui/select';
+import { useFormStatus } from 'react-dom';
+import { addPost } from '@/lib/actions/post.action';
 
 const FormSchema = z.object({
 	from: z.string().min(1, 'Please enter a location From').max(100),
@@ -83,8 +85,13 @@ export default function AddPostForm() {
 
 	// const roundTrip = form.watch('roundTrip');
 
+	const { pending } = useFormStatus();
+
 	const onSubmit = (values: z.infer<typeof FormSchema>) => {
 		console.log(values);
+
+		addPost(values);
+
 		form.reset();
 	};
 
@@ -431,8 +438,12 @@ export default function AddPostForm() {
 				</div> */}
 
 				<div className="w-full flex item-center justify-center">
-					<Button className="w-full lg:w-1/4 mt-6" type="submit">
-						Create post
+					<Button
+						className="w-full lg:w-1/4 mt-6"
+						type="submit"
+						aria-disabled={pending}
+					>
+						{pending ? 'Adding post' : 'Add post'}
 					</Button>
 				</div>
 			</form>
