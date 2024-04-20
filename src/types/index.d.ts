@@ -17,6 +17,20 @@ declare type UpdateUserParams = {
 	photo: string;
 };
 
+// ====== POST PARAMS
+declare type AddPost = {
+	from: string;
+	to: string;
+	arivalTime: string;
+	departureTime: string;
+	arivalDate: any;
+	departureDate: any;
+	totalTicket: number;
+	airlineName: string;
+	pricePerTicket: number;
+	seatType: string;
+};
+
 // ====== IMAGE PARAMS
 declare type AddImageParams = {
 	image: {
