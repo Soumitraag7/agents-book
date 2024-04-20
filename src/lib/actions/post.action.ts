@@ -10,6 +10,10 @@ import { handleError } from '@/lib//utils';
 export async function addPost(post: AddPost) {
 	try {
 		await connectToDatabase();
+
+		const newPost = await Post.create(post);
+
+		return JSON.parse(JSON.stringify(newPost));
 	} catch (error) {
 		handleError(error);
 	}
