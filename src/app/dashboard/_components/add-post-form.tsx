@@ -91,10 +91,6 @@ export default function AddPostForm() {
 	const { user } = useUser();
 
 	const onSubmit = (values: z.infer<typeof FormSchema>) => {
-		console.log('DATA :: ', values);
-
-		console.log('USER :: ', user?.id);
-
 		addPost(values, user?.id);
 
 		form.reset();
