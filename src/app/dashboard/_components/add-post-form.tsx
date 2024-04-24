@@ -34,6 +34,7 @@ import {
 } from '@/components/ui/select';
 import { useFormStatus } from 'react-dom';
 import { addPost } from '@/lib/actions/post.action';
+import { useUser } from '@clerk/nextjs';
 
 const FormSchema = z.object({
 	from: z.string().min(1, 'Please enter a location From').max(100),
@@ -87,10 +88,14 @@ export default function AddPostForm() {
 
 	const { pending } = useFormStatus();
 
-	const onSubmit = (values: z.infer<typeof FormSchema>) => {
-		console.log(values);
+	const { user } = useUser();
 
-		addPost(values);
+	const onSubmit = (values: z.infer<typeof FormSchema>) => {
+		console.log('DATA :: ', values);
+
+		console.log('USER :: ', user?.id);
+
+		addPost(values, user?.id);
 
 		form.reset();
 	};

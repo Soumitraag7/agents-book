@@ -5,13 +5,16 @@ import { revalidatePath } from 'next/cache';
 import Post from '@/lib/database/models/post.model';
 import { connectToDatabase } from '@/lib/database/mongoose';
 import { handleError } from '@/lib//utils';
+import User from '@/lib/database/models/user.model';
 
 // ADD POST
-export async function addPost(post: AddPost) {
+export async function addPost(post: AddPost, userId: string | undefined) {
 	try {
 		await connectToDatabase();
 
-		const newPost = await Post.create(post);
+		const user = await User.findOne({ clerkId: userId });
+
+		const newPost = await Post.create({ ...post, createdBy: user._id });
 
 		return JSON.parse(JSON.stringify(newPost));
 	} catch (error) {
