@@ -23,9 +23,20 @@ export async function addPost(post: AddPost, userId: string | undefined) {
 }
 
 // GET ALL POSTS
-export async function getAllPosts() {
+export async function getAllPosts(userId: string | undefined | null) {
 	try {
 		await connectToDatabase();
+
+		const user = await User.findOne({ clerkId: userId });
+
+		const posts = await Post.find({ createdBy: user._id }).sort({
+			createdAt: 'desc'
+		});
+
+		revalidatePath('/dashboard/my-posts');
+
+		return JSON.parse(JSON.stringify(posts));
+		// return posts;
 	} catch (error) {
 		handleError(error);
 	}
@@ -67,8 +78,10 @@ export async function deletePost(postId: string) {
 	try {
 		await connectToDatabase();
 
+		console.log('DELETE POST :: ', postId);
+
 		// Find post to delete
-		const postToDelete = await Post.findOne({ postId });
+		const postToDelete = await Post.findOne({ _id: postId });
 
 		if (!postToDelete) {
 			throw new Error('Post not found');
@@ -76,6 +89,7 @@ export async function deletePost(postId: string) {
 
 		// Delete post
 		const deletedPost = await Post.findByIdAndDelete(postToDelete._id);
+
 		revalidatePath('/dashboard/my-posts');
 
 		return deletedPost ? JSON.parse(JSON.stringify(deletedPost)) : null;
