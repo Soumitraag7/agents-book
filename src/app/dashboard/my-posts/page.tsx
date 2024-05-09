@@ -22,6 +22,18 @@ export default async function MyPosts() {
 
 	const posts: POSTS[] = await getAllPosts(userId);
 
+	console.log('length: ', posts.length);
+
+	if (posts.length === 0) {
+		return (
+			<main className="flex flex-col gap-5 w-full">
+				<PageTitle title="My Posts" />
+
+				<h1>You don't have any post's yet</h1>
+			</main>
+		);
+	}
+
 	return (
 		<main className="flex flex-col gap-5 w-full">
 			<PageTitle title="My Posts" />
