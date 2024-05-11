@@ -1,6 +1,6 @@
 import PageTitle from '@/app/dashboard/_components/page-title';
 import Post from '@/app/dashboard/_components/post';
-import { getAllPosts } from '@/lib/actions/post.action';
+import { getUserAllPosts } from '@/lib/actions/post.action';
 import { auth } from '@clerk/nextjs/server';
 
 export interface POSTS {
@@ -20,9 +20,7 @@ export interface POSTS {
 export default async function MyPosts() {
 	const { userId } = auth();
 
-	const posts: POSTS[] = await getAllPosts(userId);
-
-	console.log('length: ', posts.length);
+	const posts: POSTS[] = await getUserAllPosts(userId);
 
 	if (posts.length === 0) {
 		return (

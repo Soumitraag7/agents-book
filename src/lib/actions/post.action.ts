@@ -22,8 +22,8 @@ export async function addPost(post: AddPost, userId: string | undefined) {
 	}
 }
 
-// GET ALL POSTS
-export async function getAllPosts(userId: string | undefined | null) {
+// GET USER ALL POSTS
+export async function getUserAllPosts(userId: string | undefined | null) {
 	try {
 		await connectToDatabase();
 
