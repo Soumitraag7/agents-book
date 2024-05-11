@@ -49,7 +49,7 @@ const FormSchema = z.object({
 		required_error: 'Please select a departure date',
 		invalid_type_error: "That's not a date!"
 	}),
-	seatType: z.enum(['economy', 'preminum-economy', 'business', 'first']),
+	seatType: z.enum(['economy', 'preminum economy', 'business', 'first']),
 	totalTicket: z.coerce
 		.number({
 			required_error: 'Please enter total number of tickets'
@@ -190,7 +190,7 @@ export default function AddPostForm() {
 												<SelectContent>
 													<SelectGroup>
 														<SelectItem value="economy">Economy</SelectItem>
-														<SelectItem value="preminum-economy">
+														<SelectItem value="preminum economy">
 															Preminum Economy
 														</SelectItem>
 														<SelectItem value="business">Business</SelectItem>
