@@ -29,7 +29,7 @@ export default async function MyPosts() {
 			<main className="flex flex-col gap-5 w-full">
 				<PageTitle title="My Posts" />
 
-				<h1>You don't have any post's yet</h1>
+				<h1>You dont have any posts yet</h1>
 			</main>
 		);
 	}
