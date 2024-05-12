@@ -22,6 +22,26 @@ export async function addPost(post: AddPost, userId: string | undefined) {
 	}
 }
 
+// GET ALL POSTS
+export async function getAllPosts() {
+	try {
+		await connectToDatabase();
+
+		// const user = await User.findOne({ clerkId: userId });
+
+		const posts = await Post.find({}).sort({
+			createdAt: 'desc'
+		});
+
+		revalidatePath('/dashboard');
+
+		return JSON.parse(JSON.stringify(posts));
+		// return posts;
+	} catch (error) {
+		handleError(error);
+	}
+}
+
 // GET USER ALL POSTS
 export async function getUserAllPosts(userId: string | undefined | null) {
 	try {
