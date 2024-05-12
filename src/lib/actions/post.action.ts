@@ -68,7 +68,7 @@ export async function getPostById(postId: string) {
 		await connectToDatabase();
 
 		// Find post to delete
-		const singlePost = await Post.findOne({ postId });
+		const singlePost = await Post.findOne({ _id: postId });
 
 		if (!singlePost) {
 			throw new Error('Post not found');
