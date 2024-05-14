@@ -16,6 +16,8 @@ export async function addPost(post: AddPost, userId: string | undefined) {
 
 		const newPost = await Post.create({ ...post, createdBy: user._id });
 
+		revalidatePath('/dashboard/my-posts');
+
 		return JSON.parse(JSON.stringify(newPost));
 	} catch (error) {
 		handleError(error);
