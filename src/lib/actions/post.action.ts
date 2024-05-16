@@ -1,6 +1,7 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 
 import Post from '@/lib/database/models/post.model';
 import { connectToDatabase } from '@/lib/database/mongoose';
@@ -83,11 +84,23 @@ export async function getPostById(postId: string) {
 }
 
 // UPDATE POST
-export async function updatePost() {
+export async function updatePost(postId: string, post: AddPost) {
 	try {
 		await connectToDatabase();
 
-		const updatePost = await Post.findOneAndUpdate({});
+		const singlePost = await Post.findOne({ _id: postId });
+
+		if (!singlePost) {
+			throw new Error('Post not found');
+		}
+
+		const updatePost = await Post.findOneAndUpdate(
+			{ _id: postId },
+			{ ...post },
+			{
+				new: true
+			}
+		);
 
 		revalidatePath('/dashboard/my-posts');
 	} catch (error) {

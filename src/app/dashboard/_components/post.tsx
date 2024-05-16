@@ -8,6 +8,27 @@ import Link from 'next/link';
 import { format } from 'date-fns';
 import { deletePost } from '@/lib/actions/post.action';
 
+import {
+	Dialog,
+	DialogContent,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger
+} from '@/components/ui/dialog';
+import {
+	AlertDialog,
+	AlertDialogAction,
+	AlertDialogCancel,
+	AlertDialogContent,
+	AlertDialogDescription,
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogTitle,
+	AlertDialogTrigger
+} from '@/components/ui/alert-dialog';
+import EditPostForm from '@/app/dashboard/_components/edit-post-form';
+
 type Props = {
 	posts: POSTS[];
 };
@@ -43,14 +64,31 @@ export default function Post({ posts }: Props) {
 						</div>
 
 						<div className="flex items-center justify-center gap-3 ml-3">
-							<Button asChild size="sm" className="w-full cursor-pointer">
-								<div className="gap-1.5">
-									<FilePenLine className="h-4 w-4 text-black" />
-									<span>Edit</span>
-								</div>
-							</Button>
+							{/* EDIT POST */}
+							<Dialog>
+								<DialogTrigger asChild>
+									<Button size="sm">
+										<div className="flex items-center justify-center gap-1 5">
+											<FilePenLine className="h-4 w-4 text-black" />
+											<span>Edit</span>
+										</div>
+									</Button>
+								</DialogTrigger>
 
-							<Button
+								<DialogContent className="sm:max-w-[750px]">
+									<DialogHeader>
+										<DialogTitle>Edit Post</DialogTitle>
+									</DialogHeader>
+
+									<EditPostForm post={post} />
+
+									{/* <DialogFooter>
+										<Button type="submit">Save changes</Button>
+									</DialogFooter> */}
+								</DialogContent>
+							</Dialog>
+
+							{/* <Button
 								asChild
 								size="sm"
 								variant="destructive"
@@ -62,7 +100,44 @@ export default function Post({ posts }: Props) {
 								<div className="gap-1.5">
 									<Trash2 className="h-4 w-4 text-white" /> <span>Delete</span>
 								</div>
-							</Button>
+							</Button> */}
+
+							{/* DELETE POST */}
+							<AlertDialog>
+								<AlertDialogTrigger asChild>
+									<Button
+										size="sm"
+										variant="destructive"
+										className="w-full cursor-pointer"
+									>
+										<div className="flex items-center justify-center gap-1.5">
+											<Trash2 className="h-4 w-4 text-white" />{' '}
+											<span>Delete</span>
+										</div>
+									</Button>
+								</AlertDialogTrigger>
+
+								<AlertDialogContent>
+									<AlertDialogHeader>
+										<AlertDialogTitle>
+											Are you absolutely sure?
+										</AlertDialogTitle>
+
+										<AlertDialogDescription>
+											This action cannot be undone. This will permanently delete
+											your post and remove your data from our servers.
+										</AlertDialogDescription>
+									</AlertDialogHeader>
+
+									<AlertDialogFooter>
+										<AlertDialogCancel>Cancel</AlertDialogCancel>
+
+										<AlertDialogAction onClick={() => deletePost(post._id)}>
+											Continue
+										</AlertDialogAction>
+									</AlertDialogFooter>
+								</AlertDialogContent>
+							</AlertDialog>
 						</div>
 					</CardContent>
 				</Card>
