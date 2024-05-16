@@ -1,18 +1,23 @@
 'use client';
 
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
+import { cn } from '@/lib/utils';
+import { format } from 'date-fns';
+
 import * as z from 'zod';
-import { Button } from '@/components/ui/button';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+
 import { CalendarIcon, Plane } from 'lucide-react';
+
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
 import {
 	Popover,
 	PopoverContent,
 	PopoverTrigger
 } from '@/components/ui/popover';
-import { format } from 'date-fns';
-
 import {
 	Form,
 	FormControl,
@@ -21,9 +26,6 @@ import {
 	FormLabel,
 	FormMessage
 } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { cn } from '@/lib/utils';
-import { Calendar } from '@/components/ui/calendar';
 import {
 	Select,
 	SelectContent,
@@ -36,8 +38,10 @@ import {
 
 export const formSchema = z.object({
 	location: z.string().min(2, 'Location is required').max(50),
-	seatType: z.enum(['economy', 'preminum-economy', 'business', 'first']),
-	date: z.date()
+	seatType: z
+		.enum(['economy', 'preminum economy', 'business', 'first'])
+		.optional(),
+	date: z.date().optional()
 	// tripType: z.enum(['one-way', 'round-trip']),
 	// dates: z.object({
 	// 	from: z.date(),
@@ -58,7 +62,7 @@ export const formSchema = z.object({
 // );
 
 export default function SearchForm() {
-	// const router = useRouter();
+	const router = useRouter();
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -80,7 +84,17 @@ export default function SearchForm() {
 
 	function onSubmit(values: z.infer<typeof formSchema>) {
 		console.log('onSubmit :: ', values);
-		form.reset();
+
+		// const router = useRouter();
+		if (!values.date) {
+			router.push('dashboard');
+		} else {
+			router.push(
+				`/dashboard?search=${values.location}&seatType=${values.seatType}&date=${values.date}`
+			);
+		}
+
+		// form.reset();
 
 		// const checkin_monthday = values.dates.from.getDate().toString();
 		// const checkin_month = (values.dates.from.getMonth() + 1).toString();
@@ -270,13 +284,14 @@ export default function SearchForm() {
 						</div>
 					)} */}
 
+					{/* DATE */}
 					<div className="grid w-full lg:max-w-sm flex-1 items-center gap-1.5">
 						<FormField
 							control={form.control}
 							name="date"
 							render={({ field }) => (
 								<FormItem className="flex flex-col">
-									<FormLabel className="text-white">Date</FormLabel>
+									<FormLabel className="text-white">Departure Date</FormLabel>
 
 									<Popover>
 										<PopoverTrigger asChild>
@@ -321,14 +336,14 @@ export default function SearchForm() {
 						/>
 					</div>
 
-					{/* SEAT TYPE */}
-					<div className="flex w-full items-center space-x-2">
+					<div className="flex flex-col md:flex-row w-full items-center space-x-2">
+						{/* SEAT TYPE */}
 						<div className="grid items-center flex-1">
 							<FormField
 								control={form.control}
 								name="seatType"
 								render={({ field }) => (
-									<FormItem>
+									<FormItem className="w-48">
 										<FormLabel className="text-white flex">Seat Type</FormLabel>
 
 										<Select onValueChange={field.onChange}>
@@ -341,7 +356,7 @@ export default function SearchForm() {
 											<SelectContent>
 												<SelectGroup>
 													<SelectItem value="economy">Economy</SelectItem>
-													<SelectItem value="preminum-economy">
+													<SelectItem value="preminum economy">
 														Preminum Economy
 													</SelectItem>
 													<SelectItem value="business">Business</SelectItem>
@@ -357,7 +372,7 @@ export default function SearchForm() {
 						</div>
 
 						{/* SUBMIT BUTTON */}
-						<div className="mt-auto">
+						<div className="mt-5 md:mt-auto">
 							<Button type="submit" className="bg-blue-500 text-base">
 								Search
 							</Button>
