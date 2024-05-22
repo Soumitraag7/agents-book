@@ -5,11 +5,15 @@ const postSchema = new Schema(
 	{
 		from: {
 			type: String,
-			required: true
+			required: true,
+			trim: true,
+			index: true
 		},
 		to: {
 			type: String,
-			required: true
+			required: true,
+			trim: true,
+			index: true
 		},
 		departureTime: {
 			type: String,
@@ -29,15 +33,19 @@ const postSchema = new Schema(
 		},
 		totalTicket: {
 			type: Number,
-			required: true
+			required: true,
+			trim: true
 		},
 		pricePerTicket: {
 			type: Number,
-			required: true
+			required: true,
+			trim: true
 		},
 		airlineName: {
 			type: String,
-			required: true
+			required: true,
+			trim: true,
+			index: true
 		},
 		seatType: {
 			type: String,
