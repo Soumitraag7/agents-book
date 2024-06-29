@@ -22,7 +22,7 @@ export default async function Dashboard({
 
 	return (
 		<main className="flex flex-col gap-5  w-full">
-			<PageTitle title="Dashboard" />
+			<PageTitle title="Market Place" />
 
 			<SearchForm />
 
