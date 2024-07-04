@@ -22,6 +22,11 @@ const UserSchema = new Schema(
 			required: true,
 			unique: true
 		},
+		username: {
+			type: String,
+			required: true,
+			unique: true
+		},
 		photo: {
 			type: String,
 			required: true
@@ -39,11 +44,7 @@ const UserSchema = new Schema(
 		},
 		subStartDate: { type: Date },
 		subEndDate: { type: Date }
-		// username: {
-		// 	type: String,
-		// 	required: true,
-		// 	unique: true
-		// },
+
 		// planId: {
 		// 	type: Number,
 		// 	default: 1
