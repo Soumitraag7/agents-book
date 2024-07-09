@@ -17,14 +17,14 @@ export interface USER {
 	isSubscribed: boolean;
 	subStartDate?: Date;
 	subEndDate?: Date;
-	// username: string;
+	username: string;
 }
 
 export default async function Admin() {
 	const users: USER[] = await getAllUsers();
 
 	return (
-		<main className="flex flex-col gap-5 w-full">
+		<div className="flex flex-col gap-5 w-full">
 			{/* <PageTitle title="Admin" /> */}
 
 			<h1>Admin</h1>
@@ -65,6 +65,6 @@ export default async function Admin() {
 					</CardContent>
 				</Card>
 			))}
-		</main>
+		</div>
 	);
 }
