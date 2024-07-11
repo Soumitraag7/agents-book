@@ -17,8 +17,6 @@ export default async function RootLayout({
 
 	const checkIsAdmin = await isAdmin(userId);
 
-	console.log('checkIsAdmin :: ', checkIsAdmin);
-
 	if (!checkIsAdmin) {
 		redirect('/');
 	}

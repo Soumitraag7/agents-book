@@ -1,9 +1,10 @@
 // 'use client';
 
-// import PageTitle from '@/app/dashboard/_components/page-title';
+import { getAllUsers } from '@/lib/actions/admin.action';
+
+import PageTitle from '@/app/dashboard/_components/page-title';
 
 import { Card, CardContent } from '@/components/ui/card';
-import { getAllUsers } from '@/lib/actions/admin.action';
 import { format } from 'date-fns';
 
 export interface USER {
@@ -25,9 +26,7 @@ export default async function Admin() {
 
 	return (
 		<div className="flex flex-col gap-5 w-full">
-			{/* <PageTitle title="Admin" /> */}
-
-			<h1>Admin</h1>
+			<PageTitle title="Admin" />
 
 			{users.map(user => (
 				<Card key={user._id} className="flex flex-col gap-2 bg-slate-600">
