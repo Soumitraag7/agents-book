@@ -17,6 +17,13 @@ declare type UpdateUserParams = {
 	photo: string;
 };
 
+// ====== USER PARAMS
+declare type ProfileParams = {
+	agencyName: string;
+	address: string;
+	phoneNumber: string;
+};
+
 // ====== POST PARAMS
 declare type AddPost = {
 	from: string;

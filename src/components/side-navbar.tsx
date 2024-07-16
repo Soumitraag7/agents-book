@@ -20,7 +20,7 @@ import {
 import { Button } from './ui/button';
 
 import { useWindowWidth } from '@react-hook/window-size';
-import { SignOutButton } from '@clerk/nextjs';
+import { SignOutButton, UserButton, useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 
 export default function SideNavbar({}: Props) {
@@ -40,6 +40,8 @@ export default function SideNavbar({}: Props) {
 	function toggleSidebar() {
 		setIsCollapsed(!isCollapsed);
 	}
+
+	const { user } = useUser();
 
 	return (
 		<>
@@ -95,18 +97,29 @@ export default function SideNavbar({}: Props) {
 
 					{isCollapsed ? (
 						<div data-collapsed={isCollapsed}>
-							<SignOutButton signOutCallback={() => router.push('/')}>
+							<div className="flex items-center justify-center">
+								<UserButton />
+							</div>
+
+							{/* <SignOutButton signOutCallback={() => router.push('/')}>
 								<Button
 									variant="ghost"
 									className="flex items-center justify-center gap-1.5 "
 								>
 									<LogOut size={15} />
 								</Button>
-							</SignOutButton>
+							</SignOutButton> */}
 						</div>
 					) : (
 						<div data-collapsed={isCollapsed}>
-							<SignOutButton signOutCallback={() => router.push('/')}>
+							<div className="flex items-center justify-center gap-2">
+								<UserButton />
+								{!mobileWidth && (
+									<span className="text-sm">{user?.username}</span>
+								)}
+							</div>
+
+							{/* <SignOutButton signOutCallback={() => router.push('/')}>
 								<Button
 									variant="ghost"
 									className="flex items-center justify-center gap-1.5 "
@@ -114,7 +127,7 @@ export default function SideNavbar({}: Props) {
 									<LogOut size={15} />
 									{!mobileWidth && <span className="text-sm">Sign out</span>}
 								</Button>
-							</SignOutButton>
+							</SignOutButton> */}
 						</div>
 					)}
 				</aside>
