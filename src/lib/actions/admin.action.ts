@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache';
 
 import User from '@/lib/database/models/user.model';
 import { connectToDatabase } from '@/lib/database/mongoose';
-import { handleError } from '@/lib/utils';
+import { handleError, thirtyDaysFromNow } from '@/lib/utils';
 import { UserRolesEnum } from '@/constants';
 
 export async function isAdmin(clerkId: string | null) {
@@ -35,13 +35,25 @@ export async function getAllUsers() {
 	}
 }
 
-export async function updateUserSub() {
+export async function updateUserSub(userId: string, isSubscribed: boolean) {
 	try {
 		await connectToDatabase();
 
-		const user = await User.find();
+		const user = await User.find({ _id: userId });
 
 		if (!user) throw new Error('User not found');
+
+		const updatedUser = await User.findOneAndUpdate(
+			{ _id: userId },
+			{
+				isSubscribed: isSubscribed,
+				subStartDate: new Date(),
+				subEndDate: thirtyDaysFromNow()
+			},
+			{
+				new: true
+			}
+		);
 
 		// console.log('DELETE POST :: ', user);
 

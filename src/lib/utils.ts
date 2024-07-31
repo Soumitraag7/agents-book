@@ -22,6 +22,10 @@ export const handleError = (error: unknown) => {
 	}
 };
 
+// THIRTY DAYS FROM NOW
+export const thirtyDaysFromNow = () =>
+	new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
+
 // PLACEHOLDER LOADER - while image is transforming
 const shimmer = (w: number, h: number) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

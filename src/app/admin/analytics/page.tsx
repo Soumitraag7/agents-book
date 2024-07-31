@@ -1,34 +1,15 @@
 // 'use client';
 
-import { getAllUsers } from '@/lib/actions/admin.action';
-
 import PageTitle from '@/app/dashboard/_components/page-title';
-
-import { format, formatDistanceToNow } from 'date-fns';
 
 import { Button } from '@/components/ui/button';
 
-export interface USER {
-	_id: string;
-	clerkId: string;
-	firstName: string;
-	lastName: string;
-	email: string;
-	photo: string;
-	role: string;
-	isSubscribed: boolean;
-	subStartDate?: Date;
-	subEndDate?: Date;
-	username: string;
-	createdAt: Date;
-}
-
-export default function AdminPage() {
+export default function AnalyticsPage() {
 	return (
 		<main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
 			<div className="flex items-center">
-				{/* <h1 className="text-lg font-semibold md:text-2xl">Inventory</h1> */}
-				{/* <PageTitle title="Dashboard" /> */}
+				{/* <h1 className="text-lg font-semibold md:text-2xl">Analytics</h1> */}
+				{/* <PageTitle title="Analytics" /> */}
 			</div>
 			<div
 				className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm"
