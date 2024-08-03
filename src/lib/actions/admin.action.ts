@@ -39,6 +39,8 @@ export async function updateUserSub(userId: string, isSubscribed: boolean) {
 	try {
 		await connectToDatabase();
 
+		console.log(`in updateUserSub :: `, userId, isSubscribed);
+
 		const user = await User.find({ _id: userId });
 
 		if (!user) throw new Error('User not found');
@@ -46,9 +48,10 @@ export async function updateUserSub(userId: string, isSubscribed: boolean) {
 		const updatedUser = await User.findOneAndUpdate(
 			{ _id: userId },
 			{
+				role: isSubscribed ? UserRolesEnum.SUBSCRIBER : UserRolesEnum.USER,
 				isSubscribed: isSubscribed,
-				subStartDate: new Date(),
-				subEndDate: thirtyDaysFromNow()
+				subStartDate: isSubscribed ? new Date() : null,
+				subEndDate: isSubscribed ? thirtyDaysFromNow() : null
 			},
 			{
 				new: true
@@ -57,7 +60,8 @@ export async function updateUserSub(userId: string, isSubscribed: boolean) {
 
 		// console.log('DELETE POST :: ', user);
 
-		return JSON.parse(JSON.stringify(user));
+		revalidatePath('/admin/users');
+		return JSON.parse(JSON.stringify(updatedUser));
 	} catch (error) {
 		handleError(error);
 	}

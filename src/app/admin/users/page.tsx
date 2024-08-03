@@ -42,12 +42,6 @@ export interface USER {
 export default async function UserPage() {
 	const users: USER[] = await getAllUsers();
 
-	// console.log(`users :: `, users);
-	console.log(
-		`users.is :: `,
-		users.map(user => typeof user.isSubscribed)
-	);
-
 	return (
 		<Card className="border-none">
 			<CardHeader className="px-7">
@@ -69,6 +63,7 @@ export default async function UserPage() {
 							<TableHead className="text-right">Change Status</TableHead>
 						</TableRow>
 					</TableHeader>
+
 					<TableBody>
 						{users.map(user => (
 							<TableRow key={user._id}>
@@ -109,7 +104,10 @@ export default async function UserPage() {
 								</TableCell>
 
 								<TableCell className="text-center">
-									<UserStatusBtn isSubscribed={user.isSubscribed} />
+									<UserStatusBtn
+										isSubscribed={user.isSubscribed}
+										userId={user._id}
+									/>
 								</TableCell>
 							</TableRow>
 						))}
