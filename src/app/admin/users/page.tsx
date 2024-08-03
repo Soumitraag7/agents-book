@@ -2,18 +2,10 @@ import { getAllUsers } from '@/lib/actions/admin.action';
 
 import PageTitle from '@/app/dashboard/_components/page-title';
 
-import { format, formatDistanceToNow } from 'date-fns';
-
-import { Button } from '@/components/ui/button';
+import { format } from 'date-fns';
 
 import { Badge } from '@/components/ui/badge';
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle
-} from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
 	Table,
 	TableBody,
@@ -22,6 +14,7 @@ import {
 	TableHeader,
 	TableRow
 } from '@/components/ui/table';
+
 import UserStatusBtn from '@/app/admin/_components/user-status-btn';
 
 export interface USER {
@@ -103,6 +96,7 @@ export default async function UserPage() {
 										: '-'}
 								</TableCell>
 
+								{/* User Status update button*/}
 								<TableCell className="text-center">
 									<UserStatusBtn
 										isSubscribed={user.isSubscribed}

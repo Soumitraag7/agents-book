@@ -58,8 +58,6 @@ export async function updateUserSub(userId: string, isSubscribed: boolean) {
 			}
 		);
 
-		// console.log('DELETE POST :: ', user);
-
 		revalidatePath('/admin/users');
 		return JSON.parse(JSON.stringify(updatedUser));
 	} catch (error) {
